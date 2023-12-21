@@ -177,6 +177,14 @@ ip-adapter-plus-face_sd15.safetensors,ip-adapter-plus-face_sd15.safetensors"
   cgdown "$1" "$data" "ControlNet-SDXL" "controlnet"
 fi
 
+if [ "$1" == "controlnet_sd15_v1_1_400_xct" ]; then
+  data="control_v11f1e_sd15_tile.yaml,control_v11f1e_sd15_tile.yaml
+control_v11f1e_sd15_tile.pth,control_v11f1e_sd15_tile.pth
+ip-adapter_sd15_plus.pth,ip-adapter_sd15_plus.pth"
+
+  cgdown "$1" "$data" "ControlNet-SD15-XCT" "controlnet"
+fi
+
 #controlnet sdxl
 if [ "$1" == "controlnet_sdxl_v1_1_400" ]; then
   data="ip-adapter_xl.pth,ip-adapter_xl.pth
@@ -227,6 +235,20 @@ lama/ControlNetLama.pth,ControlNetLama.pth
 uniformer/upernet_global_small.pth,upernet_global_small.pth
 clip_vision/clip_h.pth,clip_h.pth
 clip_vision/clip_g.pth,clip_g.pth"
+#clip_vision/clip_vitl.pth,clip_vitl.pth"
+
+  cgdown "$1" "$data" "StableDiffusion-others"
+
+  rm -r /root/stable-diffusion-webui/extensions/sd-webui-controlnet/annotator/downloads
+  ln -s $model_dir/$1 /root/stable-diffusion-webui/extensions/sd-webui-controlnet/annotator/downloads
+fi
+
+if [ "$1" == "controlnet_annotator_xct" ]; then
+  data="leres/res101.pth,res101.pth
+leres/latest_net_G.pth,latest_net_G.pth
+midas/dpt_hybrid-midas-501f0c75.pt,dpt_hybrid-midas-501f0c75.pt
+clip_vision/clip_h.pth,clip_h.pth"
+#clip_vision/clip_g.pth,clip_g.pth"
 #clip_vision/clip_vitl.pth,clip_vitl.pth"
 
   cgdown "$1" "$data" "StableDiffusion-others"
