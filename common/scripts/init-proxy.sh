@@ -8,21 +8,21 @@ echo 'git 配置好了'
 if [ "$1" = "global" ]; then
   echo '开启全局配置'
 
-  if pgrep calm > /dev/null
+  if pgrep clash > /dev/null
   then
-    echo "calm is already running"
+    echo "clash is already running"
   else
-    echo "starting calm"
-    cd /root/calm
+    echo "starting clash"
+    cd /root/clash
 
     if ! [ -e "config.yaml" ]; then
-      cp /root/xct-autodl-sd-webui/common/configs/calm_config.yaml ./config.yaml
+      cp /root/xct-autodl-sd-webui/common/configs/clash_config.yaml ./config.yaml
       server=$(echo $http_proxy | sed 's/http:\/\/\([^:]*\):.*/\1/')
       port=$(echo $http_proxy | sed 's/.*:\([0-9]*\)$/\1/')
       sed -i "s/server_address/$server/g" config.yaml
       sed -i "s/server_port/$port/g" config.yaml
     fi
-    nohup ./calm -f config.yaml &
+    nohup ./clash -f config.yaml &
   fi
 
   export http_proxy=http://127.0.0.1:7890
