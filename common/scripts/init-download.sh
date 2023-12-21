@@ -57,6 +57,26 @@ majicmixRealistic_v6.safetensors,majicmixRealistic_v6.safetensors"
   fi
 fi
 
+
+if [ "$1" == "checkpoint_sd15_xct" ]; then
+  data="MadaiGUofeng_mix_2.5D_V1.0.safetensors,MadaiGUofeng_mix_2.5D_V1.0.safetensors
+Xiandai_xxjdoushijxx.safetensors,Xiandai_xxjdoushijxx.safetensors
+Dushi_ddkakatongdd_v1.safetensors,Dushi_ddkakatongdd_v1.safetensors
+Kongbu_AnyLoRA_Checkpoint_bakedVaeftMsefp16NOT-PRUNED.safetensors,Kongbu_AnyLoRA_Checkpoint_bakedVaeftMsefp16NOT-PRUNED.safetensors
+astreapixieradiance_v16.safetensors,astreapixieradiance_v16.safetensors
+aingdiffusion_v77.safetensors,aingdiffusion_v77.safetensors
+niji-Dongman_Erciyuan_mix_v1.0.safetensors,niji-Dongman_Erciyuan_mix_v1.0.safetensors
+darkSushi25D25D_v30.safetensors,darkSushi25D25D_v30.safetensors"
+#majicmixRealistic_v6.safetensors,majicmixRealistic_v6.safetensors"
+
+  cgdown "$1" "$data" "StableDiffusion-checkpoints-XCT" "checkpoint"
+
+  #fix old path
+  if [ -d "$model_dir/ckpt" ] && [ ! -d "$model_dir/$1/ckpt" ]; then
+    ln -s $model_dir/ckpt $model_dir/$1/ckpt
+  fi
+fi
+
 if [ "$1" == "checkpoint_sdxl" ]; then
   data="sd_xl_base_1.0.safetensors,sd_xl_base_1.0.safetensors
 sd_xl_refiner_1.0.safetensors,sd_xl_refiner_1.0.safetensors"
@@ -77,6 +97,13 @@ sdxl_vae.safetensors,sdxl_vae.safetensors"
   cgdown "$1" "$data" "StableDiffusion-VAE"
 fi
 
+if [ "$1" == "vae_xct" ]; then
+  data="vae-ft-mse-840000-ema-pruned.safetensors,vae-ft-mse-840000-ema-pruned.safetensors
+animevae.pt,animevae.pt"
+
+  cgdown "$1" "$data" "StableDiffusion-VAE" "vae"
+fi
+
 if [ "$1" == "lora" ]; then
   data="pensketch_lora_v2.3.safetensors,pensketch_lora_v2.3.safetensors
 sd_xl_offset_example-lora_1.0.safetensors,sd_xl_offset_example-lora_1.0.safetensors
@@ -84,6 +111,50 @@ sd15_lcm_lora_rank1.safetensors,sd15_lcm_lora_rank1.safetensors
 sdxl_LCM_lora_rank1.safetensors,sdxl_LCM_lora_rank1.safetensors"
 
   cgdown "$1" "$data" "StableDiffusion-LoRAs"
+fi
+
+if [ "$1" == "lora_xct" ]; then
+  data="midjourney.safetensors,midjourney.safetensors
+Kongbu_kongbu_s.safetensors,Kongbu_kongbu_s.safetensors
+ErciyuanXingnan_niji3.safetensors,ErciyuanXingnan_niji3.safetensors
+zhongguolongV2-000010.safetensors,zhongguolongV2-000010.safetensors
+Sweet_Girl_20231030174934-000018.safetensors,Sweet_Girl_20231030174934-000018.safetensors
+nardack_20230801103151.safetensors,nardack_20230801103151.safetensors
+HanxiNv_mmkkaannmm.safetensors,HanxiNv_mmkkaannmm.safetensors
+splashing_ink_20230807094909-000018.safetensors,splashing_ink_20230807094909-000018.safetensors
+XiandaiNanzhu_xxnanzhujiaoxx.safetensors,XiandaiNanzhu_xxnanzhujiaoxx.safetensors
+Gui_bbkongbb_20230702085813.safetensors,Gui_bbkongbb_20230702085813.safetensors
+JunnanLiangnv_guf3.01girl.safetensors,JunnanLiangnv_guf3.01girl.safetensors
+ruined_building_v1.0.safetensors,ruined_building_v1.0.safetensors
+kakao_20230625170838-000016.safetensors,kakao_20230625170838-000016.safetensors
+cat_20230627113759.safetensors,cat_20230627113759.safetensors
+dog_20230627135046-000018.safetensors,dog_20230627135046-000018.safetensors
+Erciyuan_kelo_2.5d_v1.0.safetensors,Erciyuan_kelo_2.5d_v1.0.safetensors
+Gufeng_gufengMJ.safetensors,Gufeng_gufengMJ.safetensors
+v2_lora_PanLeft.ckpt,v2_lora_PanLeft.ckpt
+v2_lora_PanRight.ckpt,v2_lora_PanRight.ckpt
+v2_lora_RollingAnticlockwise.ckpt,v2_lora_RollingAnticlockwise.ckpt
+v2_lora_RollingClockwise.ckpt,v2_lora_RollingClockwise.ckpt
+v2_lora_TiltDown.ckpt,v2_lora_TiltDown.ckpt
+v2_lora_TiltUp.ckpt,v2_lora_TiltUp.ckpt
+v2_lora_ZoomIn.ckpt,v2_lora_ZoomIn.ckpt
+qiuyumj.safetensors,qiuyumj.safetensors
+BJ_Sacred_beast_Shenshou_v1.0.safetensors,BJ_Sacred_beast_Shenshou_v1.0.safetensors
+1male.safetensors,1male.safetensors
+Zhengtai_1boy_niji_sticker.safetensors,Zhengtai_1boy_niji_sticker.safetensors
+GuangzeTiaojieqi_Gloss_Tweaker.safetensors,GuangzeTiaojieqi_Gloss_Tweaker.safetensors
+Guofeng_gufeng.safetensors,Guofeng_gufeng.safetensors
+DongmanChaonan_Manhuanan.safetensors,DongmanChaonan_Manhuanan.safetensors
+CongciNanerYoulelian_v2.0.safetensors,CongciNanerYoulelian_v2.0.safetensors
+Kongbu_MMkongbuMM_20230719103004.safetensors,Kongbu_MMkongbuMM_20230719103004.safetensors
+GuofengXiqu_v1.0.safetensors,GuofengXiqu_v1.0.safetensors
+Guofeng_kkgufengmankk_20230711052958.safetensors,Guofeng_kkgufengmankk_20230711052958.safetensors
+Jijia_Combat_mecha.safetensors,Jijia_Combat_mecha.safetensors
+Kuge_mn.safetensors,Kuge_mn.safetensors
+1980s_Anime_Style.safetensors,1980s_Anime_Style.safetensors
+JijiaWushi_niji_Mecha_warrior.safetensors,JijiaWushi_niji_Mecha_warrior.safetensors"
+
+  cgdown "$1" "$data" "StableDiffusion-LoRAs-XCT" "lora"
 fi
 
 if [ "$1" == "embeddings" ]; then
