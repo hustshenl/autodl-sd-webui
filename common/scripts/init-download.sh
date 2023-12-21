@@ -372,6 +372,18 @@ SadTalker_V0.0.2_512.safetensors,SadTalker_V0.0.2_512.safetensors"
 fi
 
 if [ "$1" == "animatediff_model" ]; then
+  data="mm_sd_v15_v2.ckpt,mm_sd_v15_v2.ckpt"
+
+  cgdown "$1" "$data" "AnimateDiff-Models"
+
+  webui_ext_dir="/root/stable-diffusion-webui/extensions/sd-webui-animatediff/model"
+  if [ -d $webui_ext_dir ]; then
+    rm -r $webui_ext_dir
+    ln -s $model_dir/$1 $webui_ext_dir
+  fi
+fi
+
+if [ "$1" == "animatediff_model_bak" ]; then
   data="mm_sd_v15_v2.ckpt,mm_sd_v15_v2.ckpt
 v3_sd15_mm.ckpt,v3_sd15_mm.ckpt
 v3_sd15_sparsectrl_rgb.ckpt,v3_sd15_sparsectrl_rgb.ckpt
