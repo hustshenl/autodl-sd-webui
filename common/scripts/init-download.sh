@@ -69,7 +69,7 @@ niji-Dongman_Erciyuan_mix_v1.0.safetensors,niji-Dongman_Erciyuan_mix_v1.0.safete
 darkSushi25D25D_v30.safetensors,darkSushi25D25D_v30.safetensors"
 #majicmixRealistic_v6.safetensors,majicmixRealistic_v6.safetensors"
 
-  cgdown "$1" "$data" "Jiusuan/StableDiffusion-checkpoints-XCT" "checkpoint"
+  cgdown "$1" "$data" "StableDiffusion-checkpoints-XCT" "checkpoint"
 
   #fix old path
   if [ -d "$model_dir/ckpt" ] && [ ! -d "$model_dir/checkpoint_sd15/ckpt" ]; then
@@ -101,7 +101,7 @@ if [ "$1" == "vae_xct" ]; then
   data="vae-ft-mse-840000-ema-pruned.safetensors,vae-ft-mse-840000-ema-pruned.safetensors
 animevae.pt,animevae.pt"
 
-  cgdown "$1" "$data" "Jiusuan/StableDiffusion-VAE-XCT" "vae"
+  cgdown "$1" "$data" "StableDiffusion-VAE-XCT" "vae"
 fi
 
 if [ "$1" == "lora" ]; then
@@ -154,7 +154,7 @@ Kuge_mn.safetensors,Kuge_mn.safetensors
 1980s_Anime_Style.safetensors,1980s_Anime_Style.safetensors
 JijiaWushi_niji_Mecha_warrior.safetensors,JijiaWushi_niji_Mecha_warrior.safetensors"
 
-  cgdown "$1" "$data" "Jiusuan/StableDiffusion-LoRAs-XCT" "lora"
+  cgdown "$1" "$data" "StableDiffusion-LoRAs-XCT" "lora"
 fi
 
 if [ "$1" == "embeddings" ]; then
@@ -253,7 +253,7 @@ if [ "$1" == "controlnet_sd15_v1_1_400_xct" ]; then
 control_v11f1e_sd15_tile.pth,control_v11f1e_sd15_tile.pth
 ip-adapter_sd15_plus.pth,ip-adapter_sd15_plus.pth"
 
-  cgdown "$1" "$data" "Jiusuan/ControlNet-SD15-XCT" "controlnet"
+  cgdown "$1" "$data" "ControlNet-SD15-XCT" "controlnet"
 fi
 
 #controlnet sdxl
