@@ -16,7 +16,7 @@ if [ "$1" = "global" ]; then
     cd /root/calm
 
     if ! [ -e "config.yaml" ]; then
-      cp /root/tzwm-autodl-sd-webui/common/configs/calm_config.yaml ./config.yaml
+      cp /root/xct-autodl-sd-webui/common/configs/calm_config.yaml ./config.yaml
       server=$(echo $http_proxy | sed 's/http:\/\/\([^:]*\):.*/\1/')
       port=$(echo $http_proxy | sed 's/.*:\([0-9]*\)$/\1/')
       sed -i "s/server_address/$server/g" config.yaml
