@@ -16,7 +16,7 @@ function cgdown() {
     target_dir="$4"
   fi
 
-  init_file="$target_dir/.tzwm_init_$1"
+  init_file="$target_dir/.xct_init_$1"
   if [ -e $init_file ]; then
     echo -e ">>>> $1 搞定\n"
     return
@@ -72,8 +72,8 @@ darkSushi25D25D_v30.safetensors,darkSushi25D25D_v30.safetensors"
   cgdown "$1" "$data" "StableDiffusion-checkpoints-XCT" "checkpoint"
 
   #fix old path
-  if [ -d "$model_dir/ckpt" ] && [ ! -d "$model_dir/$1/ckpt" ]; then
-    ln -s $model_dir/ckpt $model_dir/$1/ckpt
+  if [ -d "$model_dir/ckpt" ] && [ ! -d "$model_dir/checkpoint_sd15/ckpt" ]; then
+    ln -s $model_dir/ckpt $model_dir/checkpoint_sd15/ckpt
   fi
 fi
 
@@ -101,7 +101,7 @@ if [ "$1" == "vae_xct" ]; then
   data="vae-ft-mse-840000-ema-pruned.safetensors,vae-ft-mse-840000-ema-pruned.safetensors
 animevae.pt,animevae.pt"
 
-  cgdown "$1" "$data" "StableDiffusion-VAE" "vae"
+  cgdown "$1" "$data" "StableDiffusion-VAE-XCT" "vae"
 fi
 
 if [ "$1" == "lora" ]; then
@@ -322,10 +322,10 @@ clip_vision/clip_h.pth,clip_h.pth"
 #clip_vision/clip_g.pth,clip_g.pth"
 #clip_vision/clip_vitl.pth,clip_vitl.pth"
 
-  cgdown "$1" "$data" "StableDiffusion-others"
+  cgdown "$1" "$data" "StableDiffusion-others" "controlnet_annotator"
 
   rm -r /root/stable-diffusion-webui/extensions/sd-webui-controlnet/annotator/downloads
-  ln -s $model_dir/$1 /root/stable-diffusion-webui/extensions/sd-webui-controlnet/annotator/downloads
+  ln -s $model_dir/controlnet_annotator /root/stable-diffusion-webui/extensions/sd-webui-controlnet/annotator/downloads
 fi
 
 if [ "$1" == "segment_anything" ]; then
