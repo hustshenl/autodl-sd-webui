@@ -348,6 +348,17 @@ sam/sam_vit_h_4b8939.pth,sam_vit_h_4b8939.pth"
   #fi
 fi
 
+if [ "$1" == "u2net" ]; then
+  data="u2net_human_seg.onnx,u2net_human_seg.onnx
+u2net.onnx,u2net.onnx
+u2netp.onnx,u2netp.onnx"
+
+  cgdown "$1" "$data" "u2net"
+
+  rm -r /root/stable-diffusion-webui/models/u2net
+  ln -s $model_dir/$1 /root/stable-diffusion-webui/models/u2net
+fi
+
 if [ "$1" == "Deforum" ]; then
   data="AdaBins_nyu.pt,AdaBins_nyu.pt
 dpt_large-midas-2f21e586.pt,dpt_large-midas-2f21e586.pt
